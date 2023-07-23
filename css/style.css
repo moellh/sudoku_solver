@@ -201,11 +201,11 @@ td:hover {
 
 #solve {
 	margin-right: 1rem;
-	background-image: url(/fig/dash.svg);
+	background-image: url(../fig/dash.svg);
 }
 
 #note {
-	background-image: url(/fig/pen.svg);
+	background-image: url(../fig/pen.svg);
 }
 
 #solve:hover, #note:hover {
