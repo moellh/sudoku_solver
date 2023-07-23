@@ -1,15 +1,15 @@
 let grid = [ 
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
+    [ null, null, null,  null, null, null,  null, null, null ],
+    [ null, null, null,  null, null, null,  null, null, null ],
+    [ null, null, null,  null, null, null,  null, null, null ],
 
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
+    [ null, null, null,  null, null, null,  null, null, null ],
+    [ null, null, null,  null, null, null,  null, null, null ],
+    [ null, null, null,  null, null, null,  null, null, null ],
 
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ],
-    [ -1, -1, -1,  -1, -1, -1,  -1, -1, -1 ]
+    [ null, null, null,  null, null, null,  null, null, null ],
+    [ null, null, null,  null, null, null,  null, null, null ],
+    [ null, null, null,  null, null, null,  null, null, null ]
 ];
 
 /**
@@ -65,7 +65,7 @@ function isRowSolved(y) {
     for (let i = 0; i<9; i++) {
         let figure = grid[i][y];
         let index = remainingFigures.indexOf(figure);
-        if (index !== -1)
+        if (index !== null)
             remainingFigures.splice(index,1);
     }
 
@@ -85,7 +85,7 @@ function isColumnSolved(x) {
     for (let i = 0; i<9; i++) {
         let figure = grid[x][i];
         let index = remainingFigures.indexOf(figure);
-        if (index !== -1)
+        if (index !== null)
             remainingFigures.splice(index,1);
     }
 
@@ -126,7 +126,7 @@ function isSectorSolved(x,y) {
         for (let j = 0; j<3; j++) {
             let figure = sector[i][j];
             let index = remainingFigures.indexOf(figure);
-            if (index !== -1)
+            if (index !== null)
                 remainingFigures.splice(index,1);
         }
     }
