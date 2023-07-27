@@ -46,6 +46,7 @@ body {
 	background: #000;
 	color: #ddd;
 	margin: 0 auto;
+	user-select: none;
 }
 
 h1 {
@@ -62,6 +63,7 @@ h1 {
 	padding: 0 1em;
 	overflow-y: auto;
 	flex-grow: 1;
+	user-select: text;
 }
 
 #sudoku-grid {
@@ -78,54 +80,61 @@ td {
 	width: min(calc(100vw / 9), calc(50vh / 9));
 	height: min(calc(100vw / 9), calc(50vh / 9));
 	border: 1px dashed #444;
+	font-size: min(8vw,5vh);
+	vertical-align: middle;
+	text-align: center;
 }
 
-#c11, #c12, #c13, #c14, #c15, #c16, #c17, #c18, #c19 {
+#c00, #c01, #c02, #c03, #c04, #c05, #c06, #c07, #c08 {
 	border-top: 0;
 }
 
-#c19, #c29, #c39, #c49, #c59, #c69, #c79, #c89, #c99 {
+#c08, #c18, #c28, #c38, #c48, #c58, #c68, #c78, #c88 {
 	border-right: 0;
 }
 
-#c91, #c92, #c93, #c94, #c95, #c96, #c97, #c98, #c99 {
+#c80, #c81, #c82, #c83, #c84, #c85, #c86, #c87, #c88 {
 	border-bottom: 0;
 }
 
-#c11, #c21, #c31, #c41, #c51, #c61, #c71, #c81, #c91 {
+#c00, #c10, #c20, #c30, #c40, #c50, #c60, #c70, #c80 {
 	border-left: 0;
 }
 
-#c31, #c32, #c33, #c34, #c35, #c36, #c37, #c38, #c39,
-#c61, #c62, #c63, #c64, #c65, #c66, #c67, #c68, #c69 {
+#c20, #c21, #c22, #c23, #c24, #c25, #c26, #c27, #c28,
+#c50, #c51, #c52, #c53, #c54, #c55, #c56, #c57, #c58 {
 	border-bottom-style: solid;
 	border-bottom-color: #ddd;
 }
 
-#c41, #c42, #c43, #c44, #c45, #c46, #c47, #c48, #c49,
-#c71, #c72, #c73, #c74, #c75, #c76, #c77, #c78, #c79 {
+#c30, #c31, #c32, #c33, #c34, #c35, #c36, #c37, #c38,
+#c60, #c61, #c62, #c63, #c64, #c65, #c66, #c67, #c68 {
 	border-top-style: solid;
 	border-top-color: #ddd;
 }
 
-#c13, #c23, #c33, #c43, #c53, #c63, #c73, #c83, #c93,
-#c16, #c26, #c36, #c46, #c56, #c66, #c76, #c86, #c96 {
+#c02, #c12, #c22, #c32, #c42, #c52, #c62, #c72, #c82,
+#c05, #c15, #c25, #c35, #c45, #c55, #c65, #c75, #c85 {
 	border-right-style: solid;
 	border-right-color: #ddd;
 }
 
-#c14, #c24, #c34, #c44, #c54, #c64, #c74, #c84, #c94,
-#c17, #c27, #c37, #c47, #c57, #c67, #c77, #c87, #c97 {
+#c03, #c13, #c23, #c33, #c43, #c53, #c63, #c73, #c83,
+#c06, #c16, #c26, #c36, #c46, #c56, #c66, #c76, #c86 {
 	border-left-style: solid;
 	border-left-color: #ddd;
 }
 
-td:hover {
-	background: #222;
+td:not(.selected,.n1,.n2,.n3,.n4,.n5,.n6,.n7,.n8,.n9):hover {
+	background-color: #333;
+}
+
+.selected {
+	background-color: #555;
+	border: 2px solid #ddd;
 }
 
 #numbers {
-	user-select: none;
 	display: flex;
 	flex-grow: 1;
 	align-items: center;
@@ -141,6 +150,10 @@ td:hover {
 	align-items: center;
 	justify-content: center;
 	align-content: stretch;
+}
+
+.number:hover {
+	filter: brightness(1.4);
 }
 
 .n1 {
@@ -174,12 +187,12 @@ td:hover {
 }
 
 .n7 {
-	background-color: #000033;
+	background-color: #00003f;
 	color: #bfbfff;
 }
 
 .n8 {
-	background-color: #190033;
+	background-color: #1d003d;
 	color: #debcff;
 }
 
@@ -190,13 +203,12 @@ td:hover {
 
 #buttons {
 	display: flex;
-	user-select: none;
 	flex-grow: 1;
 	align-items: center;
 	justify-content: center;
 }
 
-#solve, #note {
+#solve, #annotate {
 	display: inline-flex;
 	width: 40%;
 	height: 10vh;
@@ -213,11 +225,11 @@ td:hover {
 	background-size: 7vh;
 }
 
-#note {
+#annotate {
 	background-image: url(../fig/pen.svg);
 	background-size: 5vh;
 }
 
-#solve:hover, #note:hover {
-	background-color: #222;
+#solve:hover, #annotate:hover {
+	background-color: #333;
 }

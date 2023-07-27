@@ -10,135 +10,133 @@
 <body>
     <h1>Sudoku Solver</h1>
 
-    <div id="status">
-        <p>
-            Enter numbers, then either you or computer has to solve it.
-        </p>
-    </div>
+    <p id="status">
+        Enter numbers, then either you or computer has to solve it.
+    </p>
 
     <div id="sudoku-grid">
         <table>
             <tbody>
                 <tr>
-                    <td id="c11"></td>
-                    <td id="c12"></td>
-                    <td id="c13"></td>
-                    <td id="c14"></td>
-                    <td id="c15"></td>
-                    <td id="c16"></td>
-                    <td id="c17"></td>
-                    <td id="c18"></td>
-                    <td id="c19"></td>
+                    <td id="c00" onclick="clickCell([0,0])"></td>
+                    <td id="c01" onclick="clickCell([0,1])"></td>
+                    <td id="c02" onclick="clickCell([0,2])"></td>
+                    <td id="c03" onclick="clickCell([0,3])"></td>
+                    <td id="c04" onclick="clickCell([0,4])"></td>
+                    <td id="c05" onclick="clickCell([0,5])"></td>
+                    <td id="c06" onclick="clickCell([0,6])"></td>
+                    <td id="c07" onclick="clickCell([0,7])"></td>
+                    <td id="c08" onclick="clickCell([0,8])"></td>
                 </tr>
                 <tr>
-                    <td id="c21"></td>
-                    <td id="c22"></td>
-                    <td id="c23"></td>
-                    <td id="c24"></td>
-                    <td id="c25"></td>
-                    <td id="c26"></td>
-                    <td id="c27"></td>
-                    <td id="c28"></td>
-                    <td id="c29"></td>
+                    <td id="c10" onclick="clickCell([1,0])"></td>
+                    <td id="c11" onclick="clickCell([1,1])"></td>
+                    <td id="c12" onclick="clickCell([1,2])"></td>
+                    <td id="c13" onclick="clickCell([1,3])"></td>
+                    <td id="c14" onclick="clickCell([1,4])"></td>
+                    <td id="c15" onclick="clickCell([1,5])"></td>
+                    <td id="c16" onclick="clickCell([1,6])"></td>
+                    <td id="c17" onclick="clickCell([1,7])"></td>
+                    <td id="c18" onclick="clickCell([1,8])"></td>
                 </tr>
                 <tr>
-                    <td id="c31"></td>
-                    <td id="c32"></td>
-                    <td id="c33"></td>
-                    <td id="c34"></td>
-                    <td id="c35"></td>
-                    <td id="c36"></td>
-                    <td id="c37"></td>
-                    <td id="c38"></td>
-                    <td id="c39"></td>
-                </tr>
-
-                <tr>
-                    <td id="c41"></td>
-                    <td id="c42"></td>
-                    <td id="c43"></td>
-                    <td id="c44"></td>
-                    <td id="c45"></td>
-                    <td id="c46"></td>
-                    <td id="c47"></td>
-                    <td id="c48"></td>
-                    <td id="c49"></td>
-                </tr>
-                <tr>
-                    <td id="c51"></td>
-                    <td id="c52"></td>
-                    <td id="c53"></td>
-                    <td id="c54"></td>
-                    <td id="c55"></td>
-                    <td id="c56"></td>
-                    <td id="c57"></td>
-                    <td id="c58"></td>
-                    <td id="c59"></td>
-                </tr>
-                <tr>
-                    <td id="c61"></td>
-                    <td id="c62"></td>
-                    <td id="c63"></td>
-                    <td id="c64"></td>
-                    <td id="c65"></td>
-                    <td id="c66"></td>
-                    <td id="c67"></td>
-                    <td id="c68"></td>
-                    <td id="c69"></td>
+                    <td id="c20" onclick="clickCell([2,0])"></td>
+                    <td id="c21" onclick="clickCell([2,1])"></td>
+                    <td id="c22" onclick="clickCell([2,2])"></td>
+                    <td id="c23" onclick="clickCell([2,3])"></td>
+                    <td id="c24" onclick="clickCell([2,4])"></td>
+                    <td id="c25" onclick="clickCell([2,5])"></td>
+                    <td id="c26" onclick="clickCell([2,6])"></td>
+                    <td id="c27" onclick="clickCell([2,7])"></td>
+                    <td id="c28" onclick="clickCell([2,8])"></td>
                 </tr>
 
                 <tr>
-                    <td id="c71"></td>
-                    <td id="c72"></td>
-                    <td id="c73"></td>
-                    <td id="c74"></td>
-                    <td id="c75"></td>
-                    <td id="c76"></td>
-                    <td id="c77"></td>
-                    <td id="c78"></td>
-                    <td id="c79"></td>
+                    <td id="c30" onclick="clickCell([3,0])"></td>
+                    <td id="c31" onclick="clickCell([3,1])"></td>
+                    <td id="c32" onclick="clickCell([3,2])"></td>
+                    <td id="c33" onclick="clickCell([3,3])"></td>
+                    <td id="c34" onclick="clickCell([3,4])"></td>
+                    <td id="c35" onclick="clickCell([3,5])"></td>
+                    <td id="c36" onclick="clickCell([3,6])"></td>
+                    <td id="c37" onclick="clickCell([3,7])"></td>
+                    <td id="c38" onclick="clickCell([3,8])"></td>
                 </tr>
                 <tr>
-                    <td id="c81"></td>
-                    <td id="c82"></td>
-                    <td id="c83"></td>
-                    <td id="c84"></td>
-                    <td id="c85"></td>
-                    <td id="c86"></td>
-                    <td id="c87"></td>
-                    <td id="c88"></td>
-                    <td id="c89"></td>
+                    <td id="c40" onclick="clickCell([4,0])"></td>
+                    <td id="c41" onclick="clickCell([4,1])"></td>
+                    <td id="c42" onclick="clickCell([4,2])"></td>
+                    <td id="c43" onclick="clickCell([4,3])"></td>
+                    <td id="c44" onclick="clickCell([4,4])"></td>
+                    <td id="c45" onclick="clickCell([4,5])"></td>
+                    <td id="c46" onclick="clickCell([4,6])"></td>
+                    <td id="c47" onclick="clickCell([4,7])"></td>
+                    <td id="c48" onclick="clickCell([4,8])"></td>
                 </tr>
                 <tr>
-                    <td id="c91"></td>
-                    <td id="c92"></td>
-                    <td id="c93"></td>
-                    <td id="c94"></td>
-                    <td id="c95"></td>
-                    <td id="c96"></td>
-                    <td id="c97"></td>
-                    <td id="c98"></td>
-                    <td id="c99"></td>
+                    <td id="c50" onclick="clickCell([5,0])"></td>
+                    <td id="c51" onclick="clickCell([5,1])"></td>
+                    <td id="c52" onclick="clickCell([5,2])"></td>
+                    <td id="c53" onclick="clickCell([5,3])"></td>
+                    <td id="c54" onclick="clickCell([5,4])"></td>
+                    <td id="c55" onclick="clickCell([5,5])"></td>
+                    <td id="c56" onclick="clickCell([5,6])"></td>
+                    <td id="c57" onclick="clickCell([5,7])"></td>
+                    <td id="c58" onclick="clickCell([5,8])"></td>
+                </tr>
+
+                <tr>
+                    <td id="c60" onclick="clickCell([6,0])"></td>
+                    <td id="c61" onclick="clickCell([6,1])"></td>
+                    <td id="c62" onclick="clickCell([6,2])"></td>
+                    <td id="c63" onclick="clickCell([6,3])"></td>
+                    <td id="c64" onclick="clickCell([6,4])"></td>
+                    <td id="c65" onclick="clickCell([6,5])"></td>
+                    <td id="c66" onclick="clickCell([6,6])"></td>
+                    <td id="c67" onclick="clickCell([6,7])"></td>
+                    <td id="c68" onclick="clickCell([6,8])"></td>
+                </tr>
+                <tr>
+                    <td id="c70" onclick="clickCell([7,0])"></td>
+                    <td id="c71" onclick="clickCell([7,1])"></td>
+                    <td id="c72" onclick="clickCell([7,2])"></td>
+                    <td id="c73" onclick="clickCell([7,3])"></td>
+                    <td id="c74" onclick="clickCell([7,4])"></td>
+                    <td id="c75" onclick="clickCell([7,5])"></td>
+                    <td id="c76" onclick="clickCell([7,6])"></td>
+                    <td id="c77" onclick="clickCell([7,7])"></td>
+                    <td id="c78" onclick="clickCell([7,8])"></td>
+                </tr>
+                <tr>
+                    <td id="c80" onclick="clickCell([8,0])"></td>
+                    <td id="c81" onclick="clickCell([8,1])"></td>
+                    <td id="c82" onclick="clickCell([8,2])"></td>
+                    <td id="c83" onclick="clickCell([8,3])"></td>
+                    <td id="c84" onclick="clickCell([8,4])"></td>
+                    <td id="c85" onclick="clickCell([8,5])"></td>
+                    <td id="c86" onclick="clickCell([8,6])"></td>
+                    <td id="c87" onclick="clickCell([8,7])"></td>
+                    <td id="c88" onclick="clickCell([8,8])"></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div id="numbers">
-        <span class="number n1">1</span>
-        <span class="number n2">2</span>
-        <span class="number n3">3</span>
-        <span class="number n4">4</span>
-        <span class="number n5">5</span>
-        <span class="number n6">6</span>
-        <span class="number n7">7</span>
-        <span class="number n8">8</span>
-        <span class="number n9">9</span>
+        <span class="number n1" onclick="clickNumber(1)">1</span>
+        <span class="number n2" onclick="clickNumber(2)">2</span>
+        <span class="number n3" onclick="clickNumber(3)">3</span>
+        <span class="number n4" onclick="clickNumber(4)">4</span>
+        <span class="number n5" onclick="clickNumber(5)">5</span>
+        <span class="number n6" onclick="clickNumber(6)">6</span>
+        <span class="number n7" onclick="clickNumber(7)">7</span>
+        <span class="number n8" onclick="clickNumber(8)">8</span>
+        <span class="number n9" onclick="clickNumber(9)">9</span>
     </div>
 
     <div id="buttons">
-        <span id="solve"></span>
-        <span id="note"></span>
+        <span id="solve" onclick="clickSolve()"></span>
+        <span id="annotate" onclick="clickAnnotate()"></span>
     </div>
 </body>
 </html>

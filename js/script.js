@@ -12,23 +12,62 @@ let grid = [
     [ null, null, null,  null, null, null,  null, null, null ]
 ];
 
+let selectedCell = null;
+let isAnnotating = false;
+let isSolving = false;
 
-function retieveCell(row,col) {
-    grid[row][col] = document.getElementById("c"+row+col).value;
+function retieveCell(r,c) {
+    grid[r][c] = document.getElementById("c"+r+c).value;
 }
 
 function retrieveGrid() {
-    for (let row = 0; i<9; i++)
-        for (let col = 0; j<9; j++)
-            retieveCell(row,col);
+    for (let r = 0; r<9; r++)
+        for (let c = 0; c<9; c++)
+            retieveCell(r,c);
 }
 
-function getSector(row,col) {
+function clickCell([r,c]) {
+    if(isSolving) return;
+    if (selectedCell !== null && selectedCell !== [r,c])
+        document.getElementById("c"+selectedCell[0]+selectedCell[1]).classList.remove("selected");
+    selectedCell = [r,c];
+    document.getElementById("c"+r+c).classList.add("selected");
+}
+
+function clickNumber(number) {
+    if(isSolving) return;
+
+    if (selectedCell === null) return;
+    if (isAnnotating) return; // TODO: add functionality for annotation
+
+    let element = document.getElementById("c"+selectedCell[0]+selectedCell[1]);
+    element.classList.remove("n"+grid[selectedCell[0]][selectedCell[1]]);
+    element.classList.remove("selected");
+    element.textContent = number;
+    element.classList.add("n"+number);
+    grid[selectedCell[0]][selectedCell[1]] = number;
+    if (isFilled() && isSolved()) {
+        document.getElementById("solve").classList.remove("selected");
+        isSolving = false;
+        printSuccessMessage();
+    }
+}
+
+function getSector(rs,cs) {
     return  [ 
-        [ grid[row*3  ][col*3], grid[row*3  ][col*3+1], grid[row*3  ][y*3+2] ],
-        [ grid[row*3+1][col*3], grid[row*3+1][col*3+1], grid[row*3+1][y*3+2] ],
-        [ grid[row*3+2][col*3], grid[row*3+2][col*3+1], grid[row*3+2][y*3+2] ]
+        [ grid[rs*3  ][cs*3], grid[rs*3  ][cs*3+1], grid[rs*3  ][cs*3+2] ],
+        [ grid[rs*3+1][cs*3], grid[rs*3+1][cs*3+1], grid[rs*3+1][cs*3+2] ],
+        [ grid[rs*3+2][cs*3], grid[rs*3+2][cs*3+1], grid[rs*3+2][cs*3+2] ]
     ];
+}
+
+function isFilled() {
+    for (let r = 0; r<9; r++)
+        for (let c = 0; c<9; c++)
+            if (grid[r][c] === null)
+                return false;
+
+    return true;
 }
 
 function isSolved() {
@@ -36,34 +75,33 @@ function isSolved() {
 }
 
 function areLinesSolved() {
-    for (let i = 0; i<9; i++) {
+    for (let i = 0; i<9; i++)
         if(!isRowSolved(i) || !isColumnSolved(i))
             return false;
-    }
 
     return true;
 }
 
-function isRowSolved(y) {
+function isRowSolved(r) {
     let remainingFigures = [1,2,3,4,5,6,7,8,9];
 
-    for (let i = 0; i<9; i++) {
-        let figure = grid[i][y];
+    for (let c = 0; c<9; c++) {
+        let figure = grid[r][c];
         let index = remainingFigures.indexOf(figure);
-        if (index !== null)
+        if (index !== -1)
             remainingFigures.splice(index,1);
     }
 
     return remainingFigures.length === 0;
 }
 
-function isColumnSolved(x) {
+function isColumnSolved(c) {
     let remainingFigures = [1,2,3,4,5,6,7,8,9];
 
-    for (let i = 0; i<9; i++) {
-        let figure = grid[x][i];
+    for (let r = 0; r<9; r++) {
+        let figure = grid[r][c];
         let index = remainingFigures.indexOf(figure);
-        if (index !== null)
+        if (index !== -1)
             remainingFigures.splice(index,1);
     }
     
@@ -71,26 +109,47 @@ function isColumnSolved(x) {
 }
 
 function areSectorsSolved() {
-    for (let i = 0; i<3; i++)
-        for (let j = 0; j<3; j++)
-            if(!isSectorSolved(i,j))
+    for (let rs = 0; rs<3; rs++)
+        for (let cs = 0; cs<3; cs++)
+            if(!isSectorSolved(rs,cs))
                 return false;
 
     return true;
 }
 
-function isSectorSolved(x,y) {
-    let sector = getSector(x,y);
+function isSectorSolved(rs,cs) {
+    let sector = getSector(rs,cs);
     let remainingFigures = [1,2,3,4,5,6,7,8,9];
     
-    for (let i = 0; i<3; i++) {
-        for (let j = 0; j<3; j++) {
-            let figure = sector[i][j];
+    for (let r = 0; r<3; r++) {
+        for (let c = 0; c<3; c++) {
+            let figure = sector[r][c];
             let index = remainingFigures.indexOf(figure);
-            if (index !== null)
+            if (index !== -1)
                 remainingFigures.splice(index,1);
         }
     }
 
     return remainingFigures.length === 0;
+}
+
+function clickSolve() {
+    isSolving = !isSolving;
+    let selectedElement = document.getElementById("solve");
+    selectedElement.classList.toggle("selected");
+    if (selectedCell !== null && selectedElement.classList.contains("selected")) {
+        document.getElementById("c"+selectedCell[0]+selectedCell[1]).classList.remove("selected");
+        selectedCell = null;
+    }
+}
+
+function clickAnnotate() {
+    if(isSolving) return;
+    isAnnotating = !isAnnotating;
+    document.getElementById("annotate").classList.toggle("selected");
+}
+
+function printSuccessMessage() {
+    let message = document.getElementById("status");
+    message.textContent = "Congratulations! You solved the puzzle!";
 }
