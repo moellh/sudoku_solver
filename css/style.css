@@ -67,11 +67,6 @@ h1 {
 #sudoku-grid {
 	margin: 1em auto;
 	text-align: center;
-	width: 100vw;
-	display: flex;
-	flex-grow: 1;
-	align-items: center;
-	justify-content: center;
 }
 
 table {
@@ -80,9 +75,8 @@ table {
 }
 
 td {
-	
-	width: calc(100vw / 9);
-	height: calc(100vw / 9);
+	width: min(calc(100vw / 9), calc(50vh / 9));
+	height: min(calc(100vw / 9), calc(50vh / 9));
 	border: 1px dashed #444;
 }
 
@@ -105,21 +99,25 @@ td {
 #c31, #c32, #c33, #c34, #c35, #c36, #c37, #c38, #c39,
 #c61, #c62, #c63, #c64, #c65, #c66, #c67, #c68, #c69 {
 	border-bottom-style: solid;
+	border-bottom-color: #ddd;
 }
 
 #c41, #c42, #c43, #c44, #c45, #c46, #c47, #c48, #c49,
 #c71, #c72, #c73, #c74, #c75, #c76, #c77, #c78, #c79 {
 	border-top-style: solid;
+	border-top-color: #ddd;
 }
 
 #c13, #c23, #c33, #c43, #c53, #c63, #c73, #c83, #c93,
 #c16, #c26, #c36, #c46, #c56, #c66, #c76, #c86, #c96 {
 	border-right-style: solid;
+	border-right-color: #ddd;
 }
 
 #c14, #c24, #c34, #c44, #c54, #c64, #c74, #c84, #c94,
 #c17, #c27, #c37, #c47, #c57, #c67, #c77, #c87, #c97 {
 	border-left-style: solid;
+	border-left-color: #ddd;
 }
 
 td:hover {
@@ -136,10 +134,10 @@ td:hover {
 
 .number {
 	display: inline-flex;
-	width: calc(100vw/9);
-	height: calc(100vw/9);
+	width: min(calc(100vw / 9), calc(50vh / 9));
+	height: min(calc(100vw / 9), calc(50vh / 9));
 	border-radius: 100%;
-	font-size: 8vw;
+	font-size: min(8vw,5vh);
 	align-items: center;
 	justify-content: center;
 	align-content: stretch;
@@ -212,10 +210,12 @@ td:hover {
 #solve {
 	margin-right: 1rem;
 	background-image: url(../fig/dash.svg);
+	background-size: 7vh;
 }
 
 #note {
 	background-image: url(../fig/pen.svg);
+	background-size: 5vh;
 }
 
 #solve:hover, #note:hover {
