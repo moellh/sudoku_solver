@@ -33,50 +33,53 @@ blockquote:before,blockquote:after,q:before,q:after {
 	box-sizing: border-box;
 }
 
+html {
+	height: 100%;
+}
+
 body {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
 	line-height: 1;
 	font-family: Helvetica, Arial, sans-serif;
 	background: #000;
 	color: #ddd;
-	width: 18em;
 	margin: 0 auto;
 }
 
 h1 {
 	font-size: 2em;
 	font-weight: bold;
-	margin: 1em 0;
+	margin: .5em 0;
 	text-align: center;
 }
 
 #status {
-	margin: 1em auto;
+	margin: .5em auto;
 	text-align: center;
-	height: 3em;
+	min-height: 3em;
 	padding: 0 1em;
 	overflow-y: auto;
+	flex-grow: 1;
 }
 
 #sudoku-grid {
-	margin: 2em auto;
+	margin: 1em auto;
 	text-align: center;
+	width: 100vw;
+	display: flex;
 }
 
 table {
-	display: inline-flex;
 	border-collapse: collapse;
 	border-spacing: 0;	
 }
 
-tr {
-	display: block;
-	width: 100%;
-}
-
 td {
-	float: left;
-	width: 2em;
-	height: 2em;
+	
+	width: calc(100vw / 9);
+	height: calc(100vw / 9);
 	border: 1px dashed #444;
 }
 
@@ -121,21 +124,19 @@ td:hover {
 }
 
 #numbers {
-	margin: 1 auto;
-	align-items: center;
 	user-select: none;
+	display: flex;
 }
 
 .number {
 	display: inline-flex;
-	width: 1.7rem;
-	height: 1.7rem;
-	border-radius: 50%;
-	background-color: #ccc;
-	font-size: 1.5rem;
+	width: calc(100vw/9);
+	height: calc(100vw/9);
+	border-radius: 100%;
+	font-size: 8vw;
 	align-items: center;
 	justify-content: center;
-	padding-top: 2px;
+	align-content: stretch;
 }
 
 .n1 {
@@ -184,14 +185,17 @@ td:hover {
 }
 
 #buttons {
-	margin-top: 2rem;
-	text-align: center;
+	display: flex;
+	user-select: none;
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
 }
 
 #solve, #note {
 	display: inline-flex;
 	width: 40%;
-	height: 4rem;
+	height: 10vh;
 	border-radius: 1rem;
 	padding-top: 2px;
 	background-repeat: no-repeat;
