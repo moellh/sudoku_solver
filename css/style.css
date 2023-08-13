@@ -131,7 +131,7 @@ td:not(.selected,.n1,.n2,.n3,.n4,.n5,.n6,.n7,.n8,.n9):hover {
 
 .selected {
 	background-color: #555;
-	border: 2px solid #ddd;
+	border: 2px solid #ddd !important;
 }
 
 #numbers {
@@ -156,47 +156,47 @@ td:not(.selected,.n1,.n2,.n3,.n4,.n5,.n6,.n7,.n8,.n9):hover {
 	filter: brightness(1.4);
 }
 
-.n1 {
+.t1 {
 	background-color: #330000;
 	color: #ffcccc;
 }
 
-.n2 {
+.t2 {
 	background-color: #331A00;
 	color: #ffe1c4;
 }
 
-.n3 {
+.t3 {
 	background-color: #333300;
 	color: #ffffc2;
 }
 
-.n4 {
+.t4 {
 	background-color: #003300;
 	color: #bdfebd;
 }
 
-.n5 {
+.t5 {
 	background-color: #223831;
 	color: #c8fff4;
 }
 
-.n6 {
+.t6 {
 	background-color: #003333;
 	color: #c4ffff;
 }
 
-.n7 {
+.t7 {
 	background-color: #00003f;
 	color: #bfbfff;
 }
 
-.n8 {
+.t8 {
 	background-color: #1d003d;
 	color: #debcff;
 }
 
-.n9 {
+.t9 {
 	background-color: #330033;
 	color: #ffc0ff;
 }
@@ -208,9 +208,9 @@ td:not(.selected,.n1,.n2,.n3,.n4,.n5,.n6,.n7,.n8,.n9):hover {
 	justify-content: center;
 }
 
-#solve, #annotate {
+#solve, #annotate, #lock {
 	display: inline-flex;
-	width: 40%;
+	width: 30%;
 	height: 10vh;
 	border-radius: 1rem;
 	padding-top: 2px;
@@ -230,6 +230,50 @@ td:not(.selected,.n1,.n2,.n3,.n4,.n5,.n6,.n7,.n8,.n9):hover {
 	background-size: 5vh;
 }
 
-#solve:hover, #annotate:hover {
+#lock {
+	margin-right: 1rem;
+	background-image: url(../fig/lock_open.svg);
+	background-size: 4.5vh;
+}
+
+#solve:hover, #annotate:hover, #lock:hover {
 	background-color: #333;
+}
+
+.annotation {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+  	grid-template-rows: repeat(3, 1fr);
+	width: 100%;
+	height: 100%;
+}
+
+.a {
+	width: 1/3;
+	height: 1/3;
+	font-size: 33.33%;
+}
+
+.a.t1, .a.t2, .a.t3 {
+	grid-row: 1 / span 1;
+}
+
+.a.t4, .a.t5, .a.t6 {
+	grid-row: 2 / span 1;
+}
+
+.a.t7, .a.t8, .a.t9 {
+	grid-row: 3 / span 1;
+}
+
+.a.t1, .a.t4, .a.t7 {
+	grid-column: 1 / span 1;
+}
+
+.a.t2, .a.t5, .a.t8 {
+	grid-column: 2 / span 1;
+}
+
+.a.t3, .a.t6, .a.t9 {
+	grid-column: 3 / span 1;
 }
